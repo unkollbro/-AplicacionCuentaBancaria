@@ -20,18 +20,33 @@ public class AplicacionCuentaBancaria {
         Scanner leer = new Scanner(System.in);
         int opcion=11;
         
-        String nombre_titular,codigo_cuenta_cliente;
+        String nombre_titular,codigo_entidad,codigo_oficina,digito_control,codigo_cuenta_cliente,cuenta_cliente;
         System.out.println("Nombre del titular de la cuenta (max 30 caracteres)");
         nombre_titular = leer.nextLine();
-        System.out.println("Código cuenta cliente (CCC) de la cuenta completo (entidad-oficina-dígitos de controlcuenta)");
+        System.out.println("Código cuenta cliente (CCC) de la cuenta completo (entidad-oficina-dígitos de control-cuenta)");
         System.out.println("por ejemplo : 2077 0024 00 3102575766");
+        System.out.println("Introduce los CUATRO(4) Digitos de ENTIDAD");
+        codigo_entidad = leer.next();
+        System.out.println("Introduce los CUATRO(4) Digitos de OFICINA");
+        codigo_oficina = leer.next();
+        System.out.println("Introduce los DOS(2) Digitos de CONTROL");
+        digito_control = leer.next();
+        System.out.println("Introduce los DIEZ(10) Digitos del NUMERO DE CUENTA");
+        codigo_cuenta_cliente = leer.next();
+        cuenta_cliente = codigo_entidad+codigo_oficina+digito_control+codigo_cuenta_cliente;
+        System.out.println("Tu nombre es.. "+nombre_titular);
+        System.out.println("Tu cuenta es.. "+codigo_entidad+" "+codigo_oficina+" "+digito_control+" "+codigo_cuenta_cliente);
+        System.out.println("Tu cuenta es.. "+cuenta_cliente);
         
-        codigo_cuenta_cliente = leer.nextLine();
+        System.out.println("Lo que buscas.."+codigo_entidad.substring(3, 4));
+        
+        //CALCULO DEL DIGITO CONTROL
+        
+        /*
         for (int i = 0; i < codigo_cuenta_cliente.length()-1; i++) {
             codigo_cuenta_cliente.substring(i,i+1);
             
         }
-        
         String[] partes = codigo_cuenta_cliente.split(" ");
         // por ejemplo 2077 0024 00 3102575766
         String part1 = partes[0]; // 2077
@@ -42,6 +57,9 @@ public class AplicacionCuentaBancaria {
         for (int i = 0; i < partes.length ; i++) {
             System.out.println(partes[i]);
         }
+        */
+        
+        
         /*
         do{
             Menu.mostarMenu(opcion);
