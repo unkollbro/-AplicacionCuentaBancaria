@@ -18,52 +18,49 @@ public class AplicacionCuentaBancaria {
      */
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-        int opcion=11;
-        
         String nombre_titular,codigo_entidad,codigo_oficina,digito_control,codigo_cuenta_cliente,cuenta_cliente;
         System.out.println("Nombre del titular de la cuenta (max 30 caracteres)");
         nombre_titular = leer.nextLine();
         System.out.println("Código cuenta cliente (CCC) de la cuenta completo (entidad-oficina-dígitos de control-cuenta)");
         System.out.println("por ejemplo : 2077 0024 00 3102575766");
-        System.out.println("Introduce los CUATRO(4) Digitos de ENTIDAD");
-        codigo_entidad = leer.next();
-        System.out.println("Introduce los CUATRO(4) Digitos de OFICINA");
-        codigo_oficina = leer.next();
-        System.out.println("Introduce los DOS(2) Digitos de CONTROL");
-        digito_control = leer.next();
-        System.out.println("Introduce los DIEZ(10) Digitos del NUMERO DE CUENTA");
-        codigo_cuenta_cliente = leer.next();
-        cuenta_cliente = codigo_entidad+codigo_oficina+digito_control+codigo_cuenta_cliente;
-        System.out.println("Tu nombre es.. "+nombre_titular);
-        System.out.println("Tu cuenta es.. "+codigo_entidad+" "+codigo_oficina+" "+digito_control+" "+codigo_cuenta_cliente);
-        System.out.println("Tu cuenta es.. "+cuenta_cliente);
+        //SOLICITANDO CODIGO DE CUENTA ENTERO
+        cuenta_cliente = leer.nextLine();
+        //SEPARAR EL CODIGO DE CUENTA EN TROZOS
+        codigo_entidad = cuenta_cliente.substring(0, 4);
+        codigo_oficina = cuenta_cliente.substring(5,9);
+        digito_control = cuenta_cliente.substring(8, 11);
+        codigo_cuenta_cliente = cuenta_cliente.substring(11, 21);
         
-        System.out.println("Lo que buscas.."+codigo_entidad.substring(3, 4));
-        
-        //CALCULO DEL DIGITO CONTROL
-        
+        CuentaBancaria generado = new CuentaBancaria(cuenta_cliente, codigo_entidad, codigo_oficina, cuenta_cliente, digito_control);
+        System.out.println(generado.toString());
         /*
-        for (int i = 0; i < codigo_cuenta_cliente.length()-1; i++) {
-            codigo_cuenta_cliente.substring(i,i+1);
-            
-        }
-        String[] partes = codigo_cuenta_cliente.split(" ");
-        // por ejemplo 2077 0024 00 3102575766
-        String part1 = partes[0]; // 2077
-        String part2 = partes[1]; // 0024
-        String part3 = partes[2]; // 00
-        String part4 = partes[3]; // 3102575766
-        
-        for (int i = 0; i < partes.length ; i++) {
-            System.out.println(partes[i]);
-        }
-        */
-        
-        
-        /*
+        int opcion=11;
+        Menu.mostarMenu(opcion);
         do{
             Menu.mostarMenu(opcion);
             opcion = leer.nextInt();
+            switch(opcion){
+                case 1: System.out.println("1. Ver el número de cuenta completo (CCC- Código Cuenta Cliente)");
+                        
+                        break;
+                case 2: System.out.println("2. Ver el titular de la cuenta.");
+                        break;
+                case 3: System.out.println("3. Ver el código de la entidad");
+                        break;
+                case 4: System.out.println("4. Ver el código de la oficina");
+                        break;
+                case 5: System.out.println("5. Ver el número de la cuenta (solamente el número de cuenta, sin entidad, oficina ni dígitos de control)");
+                        break;
+                case 6: System.out.println("6. Ver los dígitos de control de la cuenta");
+                        break;
+                case 7: System.out.println("7. Realizar un ingreso.");
+                        break;
+                case 8: System.out.println("8. Retirar efectivo. Habrá que solicitar por teclado la cantidad que se desea retirar");
+                        break;
+                case 9: System.out.println("9. Consultar saldo");
+                        break;
+                case 10: break; 
+            }
         }while(opcion!=10);
         */
     }
