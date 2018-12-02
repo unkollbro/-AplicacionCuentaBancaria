@@ -10,7 +10,7 @@ package aplicacioncuentabancaria;
  * @author Catalin 'uNKoLL' Ciurcanu
  */
 public class Menu {
-    public static void mostarMenu(int opcion){
+    public static void mostarMenu(){
         System.out.println("***************************************************************************************************************");
         System.out.println("** 1. Ver el número de cuenta completo (CCC- Código Cuenta Cliente)                                          **");
         System.out.println("** 2. Ver el titular de la cuenta                                                                            **");

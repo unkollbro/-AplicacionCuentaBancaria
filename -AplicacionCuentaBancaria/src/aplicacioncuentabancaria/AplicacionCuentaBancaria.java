@@ -18,51 +18,63 @@ public class AplicacionCuentaBancaria {
      */
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-        String nombre_titular,codigo_entidad,codigo_oficina,digito_control,codigo_cuenta_cliente,cuenta_cliente;
+        String nombre_titular,cuenta_cliente;
         System.out.println("Nombre del titular de la cuenta (max 30 caracteres)");
         nombre_titular = leer.nextLine();
-        System.out.println("Código cuenta cliente (CCC) de la cuenta completo (entidad-oficina-dígitos de control-cuenta)");
-        System.out.println("por ejemplo : 2077 0024 00 3102575766");
-        //SOLICITANDO CODIGO DE CUENTA ENTERO
+        System.out.println("Código cuenta cliente (CCC) de la cuenta completo (entidad-oficina-dígitos de control-cuenta) SIN ESPACIOS");
+        System.out.println("por ejemplo : 20770024003102575766");
         cuenta_cliente = leer.nextLine();
-        //SEPARAR EL CODIGO DE CUENTA EN TROZOS
-        codigo_entidad = cuenta_cliente.substring(0, 4);
-        codigo_oficina = cuenta_cliente.substring(5,9);
-        digito_control = cuenta_cliente.substring(8, 11);
-        codigo_cuenta_cliente = cuenta_cliente.substring(11, 21);
-        
-        CuentaBancaria generado = new CuentaBancaria(cuenta_cliente, codigo_entidad, codigo_oficina, cuenta_cliente, digito_control);
-        System.out.println(generado.toString());
-        /*
+        System.out.println("Bien");
+        CuentaBancaria generado;
+        generado = new CuentaBancaria(nombre_titular, cuenta_cliente);
+        System.out.println("Que deseas hacer?");
         int opcion=11;
-        Menu.mostarMenu(opcion);
+        Menu.mostarMenu();
         do{
-            Menu.mostarMenu(opcion);
+            Menu.mostarMenu();
             opcion = leer.nextInt();
             switch(opcion){
                 case 1: System.out.println("1. Ver el número de cuenta completo (CCC- Código Cuenta Cliente)");
-                        
+                        System.out.print("NUMERO DE CUENTA : ");
+                        System.out.println(generado.getCuenta());
                         break;
                 case 2: System.out.println("2. Ver el titular de la cuenta.");
+                        System.out.print("El titular de la cuenta : ");
+                        System.out.println(generado.getTitular_cuenta());
                         break;
                 case 3: System.out.println("3. Ver el código de la entidad");
+                        System.out.print("El codigo de tu entidad es : ");
+                        System.out.println(generado.getCodigo_entidad());
                         break;
                 case 4: System.out.println("4. Ver el código de la oficina");
+                        System.out.print("El codigo de tu oficina es : ");
+                        System.out.println(generado.getCodigo_oficina());
                         break;
                 case 5: System.out.println("5. Ver el número de la cuenta (solamente el número de cuenta, sin entidad, oficina ni dígitos de control)");
+                        System.out.print("Tu numero de cuenta es : ");
+                        System.out.println(generado.getCodigo_cliente());
                         break;
                 case 6: System.out.println("6. Ver los dígitos de control de la cuenta");
+                        System.out.print("Los digitos de control son : ");
+                        System.out.println(generado.getDigito_control());
                         break;
                 case 7: System.out.println("7. Realizar un ingreso.");
+                        System.out.print("Cuanto dinero quieres ingresar ?: ");
+                        int ingresar = leer.nextInt();
+                        System.out.println(generado.IngresarDinero(ingresar));
                         break;
                 case 8: System.out.println("8. Retirar efectivo. Habrá que solicitar por teclado la cantidad que se desea retirar");
+                        System.out.print("Cuanto dinero quieres retirar ?: ");
+                        int retirar = leer.nextInt();
+                        System.out.println(generado.RetirarDinero(retirar));
                         break;
                 case 9: System.out.println("9. Consultar saldo");
+                        System.out.print("Ahora mismo dispones de : ");
+                        System.out.println(generado.getSaldo_cliente());
                         break;
-                case 10: break; 
+                case 0: break; 
             }
-        }while(opcion!=10);
-        */
+        }while(opcion!=0);
     }
     
 }
