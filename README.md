@@ -11,6 +11,7 @@ de una cuenta bancaria.
 realizar las funciones de programa principal (creación de un objeto de la
 clase CuentaBancaria, solicitud al usuario de los datos del titular y la cuenta, gestión de
 un menú de opciones para poder manipular la cuenta, etc.).
+
 Se trabajará con el siguiente menú de opciones:
 1. Ver el número de cuenta completo (CCC- Código Cuenta Cliente).
 2. Ver el titular de la cuenta.
@@ -24,6 +25,8 @@ ingresar.
 8. Retirar efectivo. Habrá que solicitar por teclado la cantidad que se desea retirar.
 9. Consultar saldo.
 10. Salir de la aplicación.
+
+
 Antes de que aparezca este menú, el programa tendrá que solicitar al usuario los siguientes
 datos:
 o Nombre del titular de la cuenta (con un máximo de caracteres).
